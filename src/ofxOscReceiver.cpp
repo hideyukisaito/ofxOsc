@@ -73,15 +73,6 @@ void ofxOscReceiver::setup( int listen_port )
     ofAddListener(ofEvents.update, this, &ofxOscReceiver::update);
 }
 
-void ofxOscReceiver::update(ofEventArgs &e)
-{
-    if (getNextMessage(&currentMsg))
-    {
-        static ofEventArgs oscReceiverEventArgs;
-        ofNotifyEvent(MESSAGE_RECEIVED, oscReceiverEventArgs, this);
-    }
-}
-
 void ofxOscReceiver::shutdown()
 {
 	if ( listen_socket )
@@ -248,4 +239,12 @@ void ofxOscReceiver::releaseMutex()
 #else
 	pthread_mutex_unlock( &mutex );
 #endif
+}
+
+void ofxOscReceiver::update(ofEventArgs &e)
+{
+    if (getNextMessage(&currentMsg))
+    {
+        ofNotifyEvent(onMessageReceived, currentMsg, this);
+    }
 }

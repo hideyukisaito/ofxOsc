@@ -65,7 +65,7 @@ public:
 	/// return true
 	bool getNextMessage( ofxOscMessage* );
     
-    ofEvent<ofEventArgs> MESSAGE_RECEIVED;
+    ofEvent<ofxOscMessage> onMessageReceived;
 
 protected:
 	/// process an incoming osc message and add it to the queue
@@ -107,7 +107,9 @@ private:
 #endif
 	// ready to be deleted
 	bool socketHasShutdown;
-
+    
+    ofxOscMessage currentMsg;
+    void update(ofEventArgs &e);
 };
 
 #endif
