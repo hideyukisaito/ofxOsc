@@ -243,8 +243,9 @@ void ofxOscReceiver::releaseMutex()
 
 void ofxOscReceiver::update(ofEventArgs &e)
 {
-    if (getNextMessage(&currentMsg))
+    ofxOscMessage msg;
+    if (getNextMessage(&msg))
     {
-        ofNotifyEvent(onMessageReceived, currentMsg, this);
+        ofNotifyEvent(onMessageReceived, msg, this);
     }
 }

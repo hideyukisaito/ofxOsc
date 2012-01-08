@@ -108,7 +108,6 @@ private:
 	// ready to be deleted
 	bool socketHasShutdown;
     
-    ofxOscMessage currentMsg;
     void update(ofEventArgs &e);
 };
 
