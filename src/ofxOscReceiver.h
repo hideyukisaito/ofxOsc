@@ -91,7 +91,6 @@ private:
 	void grabMutex();
 	void releaseMutex();
     
-    ofxOscMessage currentMsg;
     void update(ofEventArgs &e);
 
 #ifdef TARGET_WIN32
@@ -107,8 +106,7 @@ private:
 #endif
 	// ready to be deleted
 	bool socketHasShutdown;
-    
-    void update(ofEventArgs &e);
+
 };
 
 #endif
